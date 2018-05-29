@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>KIMOCHI</title>
+        <meta http-equiv="cleartype" content="on">
+        <meta name="MobileOptimized" content="320">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="mobile-web-app-capable" content="yes">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <!--link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css"-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+		<link type="text/css" rel="stylesheet" href="./style/takephoto.css">
+    </head>
+    
+    <body id="pageone" style="margin:0 0 0 0;">
+		<div id="taking">
+			<div id="photo_back"></div>
+			<div id="photo_ok"></div>
+			<div id="video_space">
+				<video id="video" autoplay></video>
+				<canvas id="canvas1"></canvas>
+			</div>
+			<div id="shot"></div>
+		</div>
+		
+		<div id="writing">
+			<div id="first_block">
+				<div id="text_back"></div>
+				<div id="text_send"></div>
+				<div class="splitline"></div>
+			</div>
+			<div id="second_block">
+				<canvas id="canvas2"></canvas>
+				<textarea id="inputtext" spellcheck="false" placeholder="Say Something....."></textarea>
+				<div class="splitline"></div>
+			</div>
+			<div id="third_block">
+				<div id="add_location">Add location</div>
+				<div id="locations">
+					<div id="location1"></div>
+					<div id="location2"></div>
+					<div id="location3"></div>
+				</div>
+				<div class="splitline"></div>
+			</div>
+			<div id="fourth_block">
+				<div id="ask_return">Ask for return</div>
+				<div id="return_btn">
+					<div id="return_selectball"></div>
+				</div>
+				<div class="splitline"></div>
+			</div>
+			<div id="fifth_block">
+				<div id="share_post">Also share this post to</div>
+				<div id="share_facebook">Facebook</div>
+				<div id="share_twitter">Twitter</div>
+				<div id="facebook_share">
+					<div id="facebook_selectball"></div>
+				</div>
+				<div id="twitter_share">
+					<div id="twitter_selectball"></div>
+				</div>
+			</div>
+		</div>
+		
+		
+        <script src="./js/takephoto.js"></script>
+    </body>
+</html>

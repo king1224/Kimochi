@@ -1,0 +1,325 @@
+@media only screen and (max-width: 480px) {
+    body{
+		-webkit-user-select: none;
+		-moz-user-select: none;
+	}
+	
+	#inbox_display{
+		//background-color: rgba(255,0,136,0.5);
+		display: grid;
+		grid-template-columns: 10% 25% 50% 5% 10%;
+		grid-template-rows: 1vh 9vh 13vh 7vh;
+		grid-template-areas: '. . . . .'
+							 '. logo . setting .'
+							 '. inbox_title inbox_title inbox_title .'
+							 '. display_type display_type display_type .';
+		height: 30vh;
+		width: 100vw;
+	}
+	
+	#logo{
+		grid-area: logo;
+		background-image: url('../images/kekeke-01.png');
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+	}
+	
+	#setting{
+		grid-area: setting;
+		background-image: url('../images/kekeke-08.png');
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+	}
+	
+	#inbox_title{
+		position:relative;
+		grid-area: inbox_title;
+		background-color: #227700;
+		text-align: left;
+	}
+	
+	#unread{
+		color: white;
+		text-shadow: 0 0 0;
+		position: absolute;
+		bottom: 12%;
+		left: 5%;
+	}
+	
+	#display_type{
+		grid-area: display_type;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 32% 36% 32%;
+		grid-template-areas: '. . .'
+							 'type1 type2 type3'
+							 '. . .';
+	}
+	
+	#type1{
+		grid-area: type1;
+		background-image: url('../images/kekeke-02.png');
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#type2{
+		grid-area: type2;
+		background-image: url('../images/kekeke-03.png');
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#type3{
+		grid-area: type3;
+		background-image: url('../images/kekeke-04.png');
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#takeshots{
+		position: fixed;
+		background-color: white;
+		height: 7%;
+		width: 100%;
+		bottom: 0%;
+		z-index: 2;
+	}
+	
+	#camera_pic{
+		position: relative;
+		background-image: url('../images/kekeke-07.png');
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+		height: 60%;
+		top: 20%;
+		left: 35%;
+		width: 30%;
+		z-index: 3;
+	}
+	
+	.mail_left{
+		background-image: url('../images/kekeke-05.png');
+		background-size: 100% 100%;
+		background-position: left center;
+		background-repeat: no-repeat;
+		position:relative;
+		margin: 0vw 4vw 5vw 10vw;
+		float: left;
+		width: 38vw;
+		height: 40vw;
+		z-index: 1;
+	}
+	
+	.mail_right{
+		background-image: url('../images/kekeke-06.png');
+		background-size: 100% 100%;
+		background-position: left center;
+		background-repeat: no-repeat;
+		position:relative;
+		margin: 0vw 0vw 5vw 0vw;
+		float: left;
+		width: 38vw;
+		height: 40vw;
+		z-index: 1;
+	}
+	
+	.location{
+		background-color: white;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+	}
+	
+	.mail_left2{
+		background-image: url('../images/kekeke-05.png');
+		background-size: 100% 100%;
+		background-position: left center;
+		background-repeat: no-repeat;
+		position:relative;
+		margin: 0vw 4vw 5vw 10vw;
+		float: left;
+		width: 53vw;
+		height: 55vw;
+		z-index: 1;
+	}
+	
+	.mail_right2{
+		background-image: url('../images/kekeke-06.png');
+		background-size: 100% 100%;
+		background-position: left center;
+		background-repeat: no-repeat;
+		position:relative;
+		margin: 0vw 10vw 5vw 0vw;
+		float: right;
+		width: 53vw;
+		height: 55vw;
+		z-index: 1;
+	}
+	
+	#popup_mail{
+		background-color: white;
+		border-radius: 10px;
+		width: 0px;
+		height: 0px;
+		top: 50vh;
+		left: 50vw;
+		position: fixed;
+		display: grid;
+		grid-template-columns: 5% 90% 5%;
+		grid-template-rows: 1fr 9fr 1fr;
+		grid-template-areas: 'popup_top popup_top popup_top'
+							 'popup_pic popup_pic popup_pic'
+							 '. popup_down .';
+		z-index: 100;
+	}
+	
+	#popup_background{
+		background-image: url('../images/kekeke-20.png');
+		background-size: 100% 100%;
+		background-position: left center;
+		background-repeat: no-repeat;
+		top: 0px;
+		left: 0px;
+		width: 0px;
+		height: 0px;
+		position: fixed;
+		z-index: 99;
+	}
+	
+	#popup_top{
+		grid-area: popup_top;
+		display: grid;
+		grid-template-columns: 15% 75% 10%;
+		grid-template-rows: 30% 40% 30%;
+		grid-template-areas: '. . .'
+							 'popup_back . popup_menu'
+							 '. . .';
+	}
+	
+	#popup_back{
+		grid-area: popup_back;
+		background-image: url('../images/kekeke-09.png');
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_menu{
+		grid-area: popup_menu;
+		background-image: url('../images/kekeke-17.png');
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_pic{
+		grid-area: popup_pic;
+		background-image: url('../images/kekeke-05.png');
+		background-size: 100% 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_nextpage{
+		position: relative;
+		width: 0%;
+		height: 100%;
+		float: right;
+	}
+	
+	#popup_blur{
+		background-image: url('../images/kekeke-16.png');
+		background-size: 100% 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		position:absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 101;
+	}
+	
+	#text_field{
+		width: 100%;
+		height: 80%;
+		display: table;
+	}
+	
+	#popup_text{
+		display : table-cell;
+		vertical-align : middle;
+		position: relative;
+		font:italic bold 20px arial,sans-serif;
+		width: 100%;
+		height: 100%;
+		z-index: 102;
+		line-height: 30px;
+		padding-left: 7%;
+	}
+	
+	#popup_shot{
+		position: absolute;
+		background-image: url('../images/kekeke-05.png');
+		background-size: 100% 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		border-radius: 9999px;
+		left: 8%;
+		bottom: 8%;
+		width: 10%;
+		height: 10%;
+		z-index: 102;
+	}
+	
+	#popup_like{
+		position: absolute;
+		background-image: url('../images/kekeke-18.png');
+		background-size: 100% 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		right: 23%;
+		bottom: 8%;
+		width: 7%;
+		height: 7%;
+		z-index: 102;
+	}
+	
+	#popup_collection{
+		position: absolute;
+		background-image: url('../images/kekeke-19.png');
+		background-size: 100% 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		right: 10%;
+		bottom: 8%;
+		width: 5%;
+		height: 7%;
+		z-index: 102;
+	}
+
+	
+	#popup_blur{
+		grid-area: popup_pic;
+		background-image: url('../images/kekeke-16.png');
+		background-size: 100% 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_down{
+		grid-area: popup_down;
+		line-height: 10vw;
+		text-align: center;
+	}
+	
+	.ui-loader{
+		display: none;
+	}
+}
