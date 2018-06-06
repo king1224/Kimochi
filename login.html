@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>KIMOCHI</title>
+    <meta http-equiv="cleartype" content="on">
+	<meta name="MobileOptimized" content="320">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="mobile-web-app-capable" content="yes">
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+	<script src="https://use.typekit.net/vjc2jzq.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	<link type="text/css" rel="stylesheet" href="./style/login.css">
+  </head>
+  <body style="margin:0 0 0 0;">
+	<div id="login_display">
+		<div id="title"></div>
+		<div id="main_area">
+			<form action="login" method="post">
+				<input id="user_name" name="user_name" type="text" value="test" placeholder="Enter Username"><br>
+				<input id="user_password" name="user_password" type="text" value="test" placeholder="Password"><br>
+				<button type="submit" id="login_submit"></button>
+			</form>
+			<div id="line"></div>
+			<div id="forgetpwd">forget password?</div>
+			<div id="or">OR</div>
+			<button id="fb_singin"></button>
+		</div>
+		<div id="noaccount">
+			<div id="words">DON'T HAVE AN ACCOUNT?&nbsp;</div>
+			<div id="signup">&nbsp;SIGN UP</div>
+		</div>
+    </div>
+    <script src="./js/login.js"></script>
+  </body>
+</html>

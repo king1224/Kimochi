@@ -5,24 +5,37 @@
 		overflow-x: hidden;
 	}
 	
-	#inbox_display{
+	#profile_display{
 		display: grid;
-		grid-template-columns: 10% 25% 50% 5% 10%;
-		grid-template-rows: 1vh 9vh 15vh 10vh;
-		grid-template-areas: '. . . . .'
-							 '. logo . setting .'
-							 '. inbox_title inbox_title inbox_title .'
-							 '. display_type display_type display_type .';
-		height: 35vh;
+		grid-template-columns: 10% 25% 25% 5% 20% 5% 10%;
+		grid-template-rows: 10% 15% 5% 30% 30% 10%;
+		grid-template-areas: '. back account account . setting .'
+							 '. profile_title profile_title sendbox sendbox sendbox .'
+							 '. . . . . . .'
+							 'second_block second_block second_block second_block second_block second_block second_block'
+							 'third_block third_block third_block third_block third_block third_block third_block'
+							 'fourth_block fourth_block fourth_block fourth_block fourth_block fourth_block fourth_block';
+		height: 100vh;
 		width: 100vw;
 	}
 	
-	#logo{
-		grid-area: logo;
-		background-image: url('../images/kekeke-01.png');
-		background-size: contain;
+	#back{
+		grid-area: back;
+		background-image: url('../images/kekeke-10.png');
+		background-size: 20% auto;
 		background-position: left center;
 		background-repeat: no-repeat;
+	}
+	
+	#account{
+		grid-area: account;
+		text-align: center;
+		line-height: 9vh;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		text-decoration: underline;
 	}
 	
 	#setting{
@@ -33,14 +46,37 @@
 		background-repeat: no-repeat;
 	}
 	
-	#inbox_title{
+	#profile_title{
 		position:relative;
-		grid-area: inbox_title;
-		background-color: #1A4C12;
+		width: 95%;
+		grid-area: profile_title;
+		background-color: #DDA090;
 		text-align: left;
+		transform: translateY(-5%);
 	}
 	
-	#unread{
+	#sendbox{
+		position:relative;
+		grid-area: sendbox;
+		background-color: #771525;
+		text-align: left;
+		transform: translateY(-5%);
+	}
+	
+	#shot{
+		background-image: url('../images/face-21.png');
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+		position: absolute;
+		height: 30%;
+		width: 30%;
+		top: 30%;
+		left: 5%;
+		z-index: 10;
+	}
+	
+	#edit{
 		font-family: "Andale Mono";
 		font-size: 10px;
 		color: white;
@@ -49,22 +85,203 @@
 		left: 5%;
 	}
 	
-	#display_type{
-		grid-area: display_type;
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows: 32% 36% 32%;
-		grid-template-areas: '. . .'
-							 'type1 type2 type3'
-							 '. . .';
+	#send{
+		font-family: "Andale Mono";
+		font-size: 10px;
+		color: white;
+		position: absolute;
+		bottom: 12%;
+		left: 5%;
 	}
 	
-	#type1{
-		grid-area: type1;
-		background-image: url('../images/kekeke-02.png');
+	#second_block{
+		grid-area: second_block;
+		position: relative;
+	}
+	
+	#notifications{
+		position: absolute;
+		left: 5%;
+		top: calc(20% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#push_notifications{
+		position: absolute;
+		left: 5%;
+		top: calc(40% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#screenon_popup{
+		position: absolute;
+		left: 5%;
+		top: calc(60% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#screenoff_popup{
+		position: absolute;
+		left: 5%;
+		top: calc(80% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#notifications_bar{
+		position: absolute;
+		right: 5%;
+		top: 30%;
+		height: 13%;
+		width: 30%;
+		background-image: url('../images/kekeke-21.png');
 		background-size: contain;
-		background-position: center center;
+		background-position: right center;
 		background-repeat: no-repeat;
+	}
+	
+	#notifications_selectball{
+		position: relative;
+		float: right;
+		right: 0%;
+		height: 94%;
+		top: 3%;
+		width: 25%;
+		background-image: url('../images/kekeke-22.png');
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_on_bar{
+		position: absolute;
+		right: 5%;
+		top: 52%;
+		height: 13%;
+		width: 30%;
+		background-image: url('../images/kekeke-21.png');
+		background-size: contain;
+		background-position: right center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_on_selectball{
+		position: relative;
+		float: right;
+		right: 0%;
+		height: 94%;
+		top: 3%;
+		width: 25%;
+		background-image: url('../images/kekeke-22.png');
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_off_bar{
+		position: absolute;
+		right: 5%;
+		top: 74%;
+		height: 13%;
+		width: 30%;
+		background-image: url('../images/kekeke-21.png');
+		background-size: contain;
+		background-position: right center;
+		background-repeat: no-repeat;
+	}
+	
+	#popup_off_selectball{
+		position: relative;
+		float: right;
+		right: 0%;
+		height: 94%;
+		top: 3%;
+		width: 25%;
+		background-image: url('../images/kekeke-22.png');
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+	}
+	
+	#third_block{
+		grid-area: third_block;
+		position: relative;
+	}
+	
+	#support{
+		position: absolute;
+		left: 5%;
+		top: calc(20% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#about{
+		position: absolute;
+		left: 5%;
+		top: calc(40% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#help{
+		position: absolute;
+		left: 5%;
+		top: calc(60% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#report{
+		position: absolute;
+		left: 5%;
+		top: calc(80% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 14px;
+	}
+	
+	#fourth_block{
+		grid-area: fourth_block;
+		position: relative;
+	}
+	
+	#logout{
+		position: absolute;
+		left: 5%;
+		top: calc(50% - 12px);
+		width: 60%;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 14px;
+		color: #006837;
 	}
 	
 	#type2{
@@ -102,7 +319,7 @@
 		top: 20%;
 		left: 35%;
 		width: 30%;
-		z-index: 999;
+		z-index: 3;
 	}
 	
 	.mail_left{
@@ -333,7 +550,13 @@
 		text-align: center;
 	}
 	
-	.ui-loader{
-		display: none;
+	.splitline{
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		background-image: url('../images/kekeke-23.png');
+		background-size: 100% 100%;
+		background-position: left center;
+		background-repeat: no-repeat;
 	}
 }

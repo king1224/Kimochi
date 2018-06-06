@@ -6,12 +6,15 @@ var cacheList = [
 	"/newmail.html",
 	"/inbox.html",
 	"/takephoto.html",
+	"/login.html",
 	"/style/newmail.css",
 	"/style/inbox.css",
 	"/style/takephoto.css",
+	"/style/login.css",
 	"/js/newmail.js",
 	"/js/inbox.js",
 	"/js/takephoto.js",
+	"/js/login.js",
 	"/images/kekeke-01.png",
 	"/images/kekeke-02.png",
 	"/images/kekeke-03.png",
@@ -41,6 +44,8 @@ var cacheList = [
 	"/images/kekeke-27.png",
 	"/images/signin-20.png",
 	"/images/signin-21.png",
+	"/images/face-21.png",
+	"/images/face-22.png",
 	"https://code.jquery.com/jquery-3.3.1.js",
 	"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js",
 	"http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"
@@ -75,7 +80,7 @@ self.addEventListener('activate', event => {
 
 // fetch
 self.addEventListener('fetch', event => {
-	console.log('now fetch!');
+	//console.log('now fetch!');
 	//console.log('event.request:', event.request);
 	//console.log('[ServiceWorker] Fetch', event.request.url);
 	event.respondWith(

@@ -14,17 +14,22 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
         <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+		<script src="https://use.typekit.net/vjc2jzq.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<link type="text/css" rel="stylesheet" href="./style/takephoto.css">
     </head>
     
     <body id="pageone" style="margin:0 0 0 0;">
 		<div id="taking">
+			<div id="whitebg"></div>
 			<div id="photo_back"></div>
 			<div id="photo_ok"></div>
 			<div id="video_space">
 				<video id="video" autoplay></video>
-				<canvas id="canvas1"></canvas>
+				<canvas id="canvas1" height=100% width=100%></canvas>
 			</div>
+			<div id="whitebg2"></div>
 			<div id="shot"></div>
 		</div>
 		
@@ -67,6 +72,7 @@
 				</div>
 			</div>
 		</div>
+		<div id="text_title">NEW KIMOCHI</div>
 		
 		
         <script src="./js/takephoto.js"></script>

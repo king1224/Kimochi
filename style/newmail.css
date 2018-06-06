@@ -63,10 +63,11 @@
 	
 	#receive_msg{
 		grid-area: receive_msg;
-		background-image: url('../images/kekeke-24.png');
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
+		font-family: "Andale Mono";
+		font-size: 10px;
+		font-weight: 300;
+		color: #333333;
+		text-align: center;
 	}
 	
 	#popup_mail{
@@ -171,7 +172,7 @@
 	
 	#popup_shot{
 		position: absolute;
-		background-image: url('../images/kekeke-05.png');
+		background-image: url('../images/face-21.png');
 		background-size: 100% 100%;
 		background-position: center center;
 		background-repeat: no-repeat;

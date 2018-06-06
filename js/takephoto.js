@@ -14,6 +14,7 @@ $(document).ready(function() {
 			canvas1.style.display="none";
 			video.style.display="block";
 			$("#photo_ok").fadeOut();
+			$("#text_title").fadeOut();
 			Isshot = false;
 		}
 		else{
@@ -30,6 +31,7 @@ $(document).ready(function() {
 		canvas1.style.display="block";
 		Isshot = true;
 		$("#photo_ok").fadeIn();
+		$("#text_title").fadeIn();
 	});
 	
 	$("#photo_ok").click(function(){
@@ -56,12 +58,13 @@ $(document).ready(function() {
 			},
 			success:function(data){
 				console.log(data);
+				setTimeout(function(){window.location = './newmail.html';},5000);
+				alert('send OK!');
 			},
 			error:function(){
 				console.log("send error");
 			}
 		});
-		window.location = './inbox.html';
 	});
 	
 	var constraints = {
@@ -95,16 +98,16 @@ function checkmedia(){
 	}
 	else{
 		var ratio1 = video.videoWidth / video.videoHeight;
-		var ratio2 = $("#canvas1").width() / $("#canvas1").height();
+		var ratio2 = $("#video_space").width() / $("#video_space").height();
 		if(ratio1 > ratio2){
 			$('#video').css({"height":"60vh"});
-			xoffset = ($('#video').width() - $('#canvas1').width()) / 2;
+			xoffset = ($('#video').width() - $('#video_space').width()) / 2;
 			$('#video').css({"transform":"translateX(-" + xoffset +"px)"});
 			xoffset = xoffset * video.videoWidth / $('#video').width();
 		}
 		else{
 			$('#video').css({"width":"100vw"});
-			yoffset = ($('#video').height() - $('#canvas1').height()) / 2;
+			yoffset = ($('#video').height() - $('#video_space').height()) / 2;
 			$('#video').css({"transform":"translateY(-" + yoffset +"px)"});
 			yoffset = yoffset * video.videoHeight / $('#video').height();
 		}

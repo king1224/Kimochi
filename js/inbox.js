@@ -1,4 +1,4 @@
-const url = 'http://luffy.ee.ncku.edu.tw:10078';
+const url = 'http://192.168.1.103:10078';
 var _user_name;
 var _user_password;
 var userId;
@@ -8,10 +8,10 @@ var mailtoggle = true;
 $(document).ready(function() {
 	notifyMe();
 	setUser();
+	setTimeout(function(){$("#mails").append('<div style="float:left;height:7vh;width:100vw"></div>');},5000);
 
 	socket.on('loginResult',(data)=>{
 		if(!data.code){
-			alert('success login');
 			showmail(data.mail);
 		}
 		else alert(data.code);
@@ -26,6 +26,11 @@ $(document).ready(function() {
 		$("#popup_background").css({"width":"100vw","height":"100vh"});
 		$("#popup_down").html("TAINAN, STREET");
 		$("main").css({"-webkit-filter":"blur(5px)"});
+		/*
+		var pic = document.getElementById('popup_pic');
+		var bigImg = document.getElementById("test2").cloneNode();
+		$('div#popup_pic > img').remove();
+		pic.appendChild(bigImg);*/
 	});
 	
 	$(".mail_left").click(function(){
@@ -33,6 +38,35 @@ $(document).ready(function() {
 		$("#popup_background").css({"width":"100vw","height":"100vh"});
 		$("#popup_down").html("TAINAN, STREET");
 		$("main").css({"-webkit-filter":"blur(5px)"});
+		/*
+		var pic = document.getElementById('popup_pic');
+		var bigImg = document.getElementById("test1").cloneNode();
+		$('div#popup_pic > img').remove();
+		pic.appendChild(bigImg);*/
+	});
+	
+	$(".mail_right2").click(function(){
+		$("#popup_mail").animate({width:"90vw",height:"110vw",top:"15vh",left:"5vw"});
+		$("#popup_background").css({"width":"100vw","height":"100vh"});
+		$("#popup_down").html("TAINAN, STREET");
+		$("main").css({"-webkit-filter":"blur(5px)"});
+		/*
+		var pic = document.getElementById('popup_pic');
+		var bigImg = document.getElementById("test2").cloneNode();
+		$('div#popup_pic > img').remove();
+		pic.appendChild(bigImg);*/
+	});
+	
+	$(".mail_left2").click(function(){
+		$("#popup_mail").animate({width:"90vw",height:"110vw",top:"15vh",left:"5vw"});
+		$("#popup_background").css({"width":"100vw","height":"100vh"});
+		$("#popup_down").html("TAINAN, STREET");
+		$("main").css({"-webkit-filter":"blur(5px)"});
+		/*
+		var pic = document.getElementById('popup_pic');
+		var bigImg = document.getElementById("test1").cloneNode();
+		$('div#popup_pic > img').remove();
+		pic.appendChild(bigImg);*/
 	});
 	
 	$("#popup_back").click(function(){
@@ -42,6 +76,16 @@ $(document).ready(function() {
 		$("main").css({"-webkit-filter":"blur(0px)"});
 		$("#popup_nextpage").animate({width:"0%"});
 		$("#popup_text").html("");
+	});
+	
+	$("#type1").click(function(){
+		$(".mail_left2").removeClass("mail_left2").addClass("mail_left");
+		$(".mail_right2").removeClass("mail_right2").addClass("mail_right");
+	});
+	
+	$("#type2").click(function(){
+		$(".mail_left").removeClass("mail_left").addClass("mail_left2");
+		$(".mail_right").removeClass("mail_right").addClass("mail_right2");
 	});
 	
 	if ('serviceWorker' in navigator) {
@@ -83,26 +127,16 @@ function setUser(){
 };
 
 function showmail(mails){
-	for(i=0;i<mails.userGet.length;i++){
-		if(!mails.userGet[i].isread){
-			addlist(mails.userGet[i].mail_id);
-		}
-	}
-	
-	for(i=0;i<mails.userGet.length;i++){
-		if(mails.userGet[i].isread){
-			addlist(mails.userGet[i].mail_id);
-		} 
-	}
+	addlist(mails.msg, mails.pic);
 }
 
-function addlist(text){
+function addlist(text, pic){
 	if(mailtoggle){
-		$("#mails").append('<div class="mail_left"><div class="location">' + text + '</div></div>');
+		$("#mails").append('<div class="mail_left"><img src="' + pic + '"/><div class="location">' + text + '</div></div>');
 		mailtoggle = false;
 	}
 	else{
-		$("#mails").append('<div class="mail_right"><div class="location">' + text + '</div></div>');
+		$("#mails").append('<div class="mail_right"><img src="' + pic + '"/><div class="location">' + text + '</div></div>');
 		mailtoggle = true;
 	}
 }

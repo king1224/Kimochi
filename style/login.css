@@ -1,0 +1,158 @@
+@media only screen and (max-width: 480px) {
+    body{
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		height: 100vh;
+		width: 100vw;
+	}
+	
+	#login_display{
+		display: grid;
+		grid-template-columns: 3fr 5fr 3fr;
+		grid-template-rows: 30% 55% 15%;
+		grid-template-areas: '. title .'
+							 'main_area main_area main_area'
+							 'noaccount noaccount noaccount';
+		height: 100vh;
+		width: 100vw;
+	}
+	
+	#title{
+		grid-area: title;
+		background-image: url('../images/kekeke-01.png');
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+	}
+	
+	#main_area{
+		position:relative;
+		grid-area: main_area;
+		background-color: #6FAAA9;
+	}
+	
+	#user_name{
+		position:absolute;
+		top:10%;
+	}
+	
+	#user_password{
+		position:absolute;
+		top:23%;
+	}
+	
+	input{
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 100;
+		background-color: rgba(0,0,0,0);
+		color: #FFFFFF;
+		border: 0px;
+		text-align: center;
+		width: 100%;
+	}
+	input:focus
+	{
+		outline:none;
+	}
+	
+	::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: #FFFFFF;
+		opacity: 1; /* Firefox */
+		letter-spacing: 1px;
+		font-size: 10px;
+	}
+	
+	#login_submit{
+		position:absolute;
+		background-image: url('/images/signin-20.png');
+		background-color: rgba(0, 0, 0, 0);
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+		border: 0;
+		width: 86%;
+		height: 25%;
+		top: 32%;
+		left: 7%;
+	}
+	
+	#line{
+		position: absolute;
+		background-color: rgba(255,255,255,0.5);
+		width: 80%;
+		height: 1px;
+		left: 10%;
+		top: 20%;
+	}
+	
+	#forgetpwd{
+		position: absolute;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 100;
+		font-size: 10px;
+		color: rgba(255,255,255,1);
+		top: 57%;
+		width: 100%;
+		text-decoration: underline;
+		text-align: center;
+		letter-spacing: 1px;
+	}
+	
+	#or{
+		position: absolute;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 100;
+		font-size: 7px;
+		color: rgba(255,255,255,1);
+		top: 65%;
+		width: 100%;
+		text-align: center;
+	}
+
+	#fb_singin{
+		position:absolute;
+		background-image: url('/images/signin-21.png');
+		background-color: rgba(0, 0, 0, 0);
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+		border: 0;
+		width: 86%;
+		height: 25%;
+		top: 67%;
+		left: 7%;
+	}
+
+	#noaccount{
+		position: relative;
+		grid-area: noaccount;
+	}
+	
+	#words{
+		position: absolute;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 100;
+		font-size: 10px;
+		top: 40%;
+		width: 60%;
+		text-decoration: underline;
+		text-align: right;
+	}
+	
+	#signup{
+		position: absolute;
+		font-family: source-han-sans-traditional, sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 10px;
+		top: 40%;
+		width: 40%;
+		text-decoration: underline;
+		text-align: left;
+		right: 0px;
+	}
+}

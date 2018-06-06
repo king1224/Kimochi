@@ -15,15 +15,19 @@ var test = require('./routes/test.js')(io);
 //require db models
 var usermodel = require('./models/User.js');
 
+//require db models
+var mailmodel = require('./models/Mail.js');
+
 //connect db
 require('./config/dbconnect.js');
 
 //set
 app.use(express.static(__dirname+'/public'));
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname));
 app.use(cookieParser());
-app.use(bodyParser.json({limit:'100mb'}));
-app.use(bodyParser.urlencoded({limit:'100mb',extended:true}));
+app.use(bodyParser.json({limit:'50mb',extended:true}));
+app.use(bodyParser.urlencoded({limit:'50mb',extended:true}));
+app.use(bodyParser());
 http.listen(port);
 
 
@@ -34,18 +38,18 @@ app.use(test);//send a mail to user:"test" and notify
 
 //home page
 app.get('/', function (req,res) {
-	console.log(req.cookies.user);
+	console.log('uesr: ' + req.cookies.user);
 	if (req.cookies.user == null) {
 		res.redirect('/login');
 	} 
 	else {
-		res.sendFile('demo.html', {root: __dirname+'/public/'});
+		res.sendFile('newmail.html', {root: __dirname});
 	}
 });
 
 //login page
 app.get('/login',function(req,res){
-	res.sendFile('login.html', {root: __dirname+'/public/'});
+	res.sendFile('login.html', {root: __dirname});
 });
 
 //handle event
@@ -59,6 +63,7 @@ app.post('/login',function(req,res){
 		if (Object.keys(userdata).length){
 			res.cookie('user',userdata._id,{path:'/',maxAge:600000});
 			res.cookie('user_name',userdata.name,{path:'/',maxAge:600000});
+			console.log("[cookie ok!]: " + userdata.name);
 			res.redirect('/');
 		}
 		else
@@ -76,9 +81,28 @@ io.on('connection',function(socket){
 		if (!users[data.user]) {
 			users[data.user] = socket.id;
 			usermodel.findOne({name:data.user}).exec(function(err,doc){
-				socket.emit('loginResult',{
-					mail:doc.mails
-				});
+				results = []
+				for(i=0;i<doc.mails.userGet.length;i++){
+					if(!doc.mails.userGet[i].isread){
+						mailmodel.findOne({_id:doc.mails.userGet[i].mail_id}).exec(function(err,doc){
+							results.push(doc);
+							socket.emit('loginResult',{
+								mail:doc
+							});
+						});
+					}
+				}
+				
+				for(i=0;i<doc.mails.userGet.length;i++){
+					if(doc.mails.userGet[i].isread){
+						mailmodel.findOne({_id:doc.mails.userGet[i].mail_id}).exec(function(err,doc){
+							results.push(doc);
+							socket.emit('loginResult',{
+								mail:doc
+							});
+						});
+					} 
+				}
 			});
 		}
 	});

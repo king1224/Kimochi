@@ -14,6 +14,8 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+		<script src="https://use.typekit.net/vjc2jzq.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<link type="text/css" rel="stylesheet" href="./style/inbox.css">
     </head>
     
@@ -21,9 +23,9 @@
 	<main>
 		<div id="inbox_display">
 			<div id="logo"></div>
-			<div id="setting"></div>
+			<div id="setting" onclick="window.location='./profile.html';"></div>
 			<div id="inbox_title">
-				<div id="unread">unread&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02</div>
+				<div id="unread">UNREAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02</div>
 			</div>
 			<div id="display_type">
 				<div id="type1"></div>
@@ -32,10 +34,10 @@
 			</div>
 		</div>
 		<div id="mails">
-			<div class="mail_left"><div class="location">Taiwan</div></div>
-			<div class="mail_right"><div class="location">Taiwan</div></div>
-			<div class="mail_left2"><div class="location">Taiwan</div></div>
-			<div class="mail_right2"><div class="location">Taiwan</div></div>
+			<div class="mail_left"><img id="test1" src="../images/kekeke-05.png"/><div class="location">TAINAN, TAIWAN</div></div>
+			<div class="mail_right"><img id="test2" src="../images/kekeke-06.png"/><div class="location">TAINAN, TAIWAN</div></div>
+			<div class="mail_left"><img src="../images/kekeke-05.png"/><div class="location">TAINAN, TAIWAN</div></div>
+			<div class="mail_right"><img src="../images/kekeke-06.png"/><div class="location">TAINAN, TAIWAN</div></div>
 		</div>
 		<div id="takeshots">
 			<div id="camera_pic" onclick="window.location='./takephoto.html';"></div>
@@ -54,6 +56,7 @@
 					<div id="popup_like"></div>
 					<div id="popup_collection"></div>
 				</div>
+				<!--img src="../images/kekeke-06.png"/-->
 			</div>
 			<div id="popup_down"></div>
 		</div>
