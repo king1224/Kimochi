@@ -16,7 +16,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
 		<script src="https://use.typekit.net/vjc2jzq.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
-		<link type="text/css" rel="stylesheet" href="./style/inbox.css">
+		<link type="text/css" rel="stylesheet" href="./style/outbox.css">
     </head>
     
     <body id="pageone" style="margin:0 0 0 0;">
@@ -25,19 +25,14 @@
 			<div id="logo"></div>
 			<div id="setting" onclick="window.location='./profile.html';"></div>
 			<div id="inbox_title">
-				<div id="unread">UNREAD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02</div>
+				<div id="unread">SENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02</div>
 			</div>
 			<div id="display_type">
 				<div id="type1"></div>
 				<div id="type2"></div>
-				<div id="type3"></div>
 			</div>
 		</div>
 		<div id="mails">
-			<!--div class="mail_left"><img id="test1" src="../images/kekeke-05.png"/><div class="location">TAINAN, TAIWAN</div></div>
-			<div class="mail_right"><img id="test2" src="../images/kekeke-06.png"/><div class="location">TAINAN, TAIWAN</div></div>
-			<div class="mail_left"><img src="../images/kekeke-05.png"/><div class="location">TAINAN, TAIWAN</div></div>
-			<div class="mail_right"><img src="../images/kekeke-06.png"/><div class="location">TAINAN, TAIWAN</div></div-->
 		</div>
 		<div id="takeshots">
 			<div id="camera_pic" onclick="window.location='./takephoto.html';"></div>
@@ -54,8 +49,8 @@
 					<div id="popup_blur"></div>
 					<div id="text_field"><a id="popup_text"></a></div>
 					<div id="popup_shot"></div>
-					<div id="popup_like"></div>
-					<div id="popup_collection"></div>
+					<!--div id="popup_like"></div>
+					<div id="popup_collection"></div-->
 				</div>
 			</div>
 			<div id="popup_down"></div>
@@ -69,6 +64,6 @@
     <div id="popup_background"></div>
 		
         <script src="./js/handler.js"></script>
-        <script src="./js/inbox.js"></script>
+        <script src="./js/outbox.js"></script>
     </body>
 </html>

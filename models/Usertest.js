@@ -7,21 +7,17 @@ var UserSchema = new mongoose.Schema({
             userGet:[{
               mail_id:String,
               isread: Boolean,
-              islike: Boolean,
-              iscollect: Boolean,
               time:Date
             }],
             unrecv:[{
               mail_id:String,
               isread: Boolean,
-              islike: Boolean,
-              iscollect: Boolean,
               time:Date
             }]
           }
                                      },
-          {collection :'User'}                          
+          {collection :'Usertest'}                          
                                      );
 
 
-module.exports = mongoose.model('User',UserSchema);
+module.exports = mongoose.model('Usertest',UserSchema);

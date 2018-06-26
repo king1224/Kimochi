@@ -3,8 +3,8 @@ var MailSchema = new mongoose.Schema({
           msg: String,
           pic: String,
           },
-          {collection :'Mail'}                          
+          {collection :'Mailtest'}                          
 );
 
 
-module.exports = mongoose.model('Mail',MailSchema);
+module.exports = mongoose.model('Mailtest',MailSchema);

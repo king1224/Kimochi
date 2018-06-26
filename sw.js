@@ -48,7 +48,7 @@ var cacheList = [
 	"/images/face-22.png",
 	"https://code.jquery.com/jquery-3.3.1.js",
 	"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js",
-	"http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"
+	"https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"
 ]
 
 // install
@@ -83,8 +83,49 @@ self.addEventListener('fetch', event => {
 	//console.log('now fetch!');
 	//console.log('event.request:', event.request);
 	//console.log('[ServiceWorker] Fetch', event.request.url);
+
+
+/*
+ 		let request = event.request;
+		let url = new URL(request.url);
+    if (request.headers.get('Accept').includes('text/html')) {
+		    event.respondWith(
+            fetch(request)
+                .then( response => {
+                    // NETWORK
+                    // Stash a copy of this page in the pages cache
+                    let copy = response.clone();
+                    if (offlinePages.includes(url.pathname) || offlinePages.includes(url.pathname + '/')) {
+                        stashInCache(staticCacheName, request, copy);
+                    } else {
+                        stashInCache('page', request, copy);
+                    }
+                    return response;
+                })
+                .catch( () => {
+                    var tmp;
+                    fetch('/inbox.html').then(function(res){
+                      //console.log(res);
+                      console.log(res);
+                      return res;
+                    });
+                    //console.log('still here');
+                    // CACHE or FALLBACK
+                    return caches.match(request)
+                        .then( response => response || caches.match('/newmail.html'));
+                })
+        );
+        return;
+    } 
+*/
+
+
+
 	event.respondWith(
 		caches.match(event.request).then(function (response) {
+      //console.log("responed: " + response.redirected);
+			//if(response.redirected == true)
+			//	response = cleanResponse(response);
 			return response || fetch(event.request).then(res =>
 				// 存 caches 之前，要先打開 caches.open(dataCacheName)
 				caches.open(dataCacheName)
@@ -98,3 +139,27 @@ self.addEventListener('fetch', event => {
 		})
 	);
 });
+
+function stashInCache(cacheName, request, response){
+  caches.open(cacheName)
+    .then(cache => cache.put(request, response));
+}
+
+function cleanResponse(response) {
+  const clonedResponse = response.clone();
+
+  // Not all browsers support the Response.body stream, so fall back to reading
+  // the entire body into memory as a blob.
+  const bodyPromise = 'body' in clonedResponse ?
+    Promise.resolve(clonedResponse.body) :
+    clonedResponse.blob();
+
+  return bodyPromise.then((body) => {
+    // new Response() is happy when passed either a stream or a Blob.
+    return new Response(body, {
+      headers: clonedResponse.headers,
+      status: clonedResponse.status,
+      statusText: clonedResponse.statusText,
+    });
+  });
+}

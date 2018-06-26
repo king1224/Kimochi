@@ -36,7 +36,7 @@
 	#inbox_title{
 		position:relative;
 		grid-area: inbox_title;
-		background-color: #1A4C12;
+		background-color: #771525;
 		text-align: left;
 	}
 	
@@ -52,11 +52,11 @@
 	#display_type{
 		grid-area: display_type;
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 		grid-template-rows: 32% 36% 32%;
-		grid-template-areas: '. . .'
-							 'type1 type2 type3'
-							 '. . .';
+		grid-template-areas: '. . . . .'
+							 '. type1 . type2 .'
+							 '. . . . .';
 	}
 	
 	#type1{
@@ -70,14 +70,6 @@
 	#type2{
 		grid-area: type2;
 		background-image: url('../images/kekeke-03.png');
-		background-size: contain;
-		background-position: center center;
-		background-repeat: no-repeat;
-	}
-	
-	#type3{
-		grid-area: type3;
-		background-image: url('../images/kekeke-04.png');
 		background-size: contain;
 		background-position: center center;
 		background-repeat: no-repeat;

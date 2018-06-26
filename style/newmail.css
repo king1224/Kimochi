@@ -128,12 +128,18 @@
 	
 	#popup_pic{
 		grid-area: popup_pic;
-		background-image: url('../images/kekeke-05.png');
-		background-size: 100% 100%;
-		background-position: center center;
-		background-repeat: no-repeat;
 	}
 	
+	#next_mail{
+		position: absolute;
+		width: 30%;
+		height: 10%;
+    top: 5%;
+    line-height: 10%;
+    left: 35%;
+    text-align: center;
+	}
+
 	#popup_nextpage{
 		position: relative;
 		width: 0%;
@@ -154,7 +160,7 @@
 	
 	#text_field{
 		width: 100%;
-		height: 80%;
+		height: 81%;
 		display: table;
 	}
 	
@@ -163,11 +169,13 @@
 		vertical-align : middle;
 		position: relative;
 		font:italic bold 20px arial,sans-serif;
-		width: 100%;
+		width: 86%;
 		height: 100%;
 		z-index: 102;
 		line-height: 30px;
 		padding-left: 7%;
+		padding-right: 7%;
+    word-break: break-all;
 	}
 	
 	#popup_shot{
@@ -214,6 +222,34 @@
 		grid-area: popup_down;
 		line-height: 10vw;
 		text-align: center;
+	}
+		
+	#menu_list{
+    border-radius: 10px;
+    position: absolute;
+		width: 0vw;
+    height: 33vw;
+    left: 5%;
+    top: 5%;
+    background-color: rgba(255,255,255,1);
+    z-index: 104;
+	}
+
+  .list{
+    position: relative;
+    top: 16%;
+    height: 33.3%;
+    width: 100%;
+    line-height: 33.3%;
+    padding-left: 5%;
+  }
+	
+	#popup_all{
+    position: absolute;
+		width: 0vw;
+    height: 110vw;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 0;
 	}
 	
 	.ui-loader{

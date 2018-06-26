@@ -4,7 +4,7 @@ var _user_password;
 var userId;
 //var socket = io.connect(url);
 var mailtoggle = true;
-var inboxmails;
+var outboxmails;
 var mailcount;
 
 $(document).ready(function() {
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   $.ajax({
     type:"POST",
-    url:"/checkmails",
+    url:"/outboxmails",
     data:
     {
       user_id: $.cookie('user')
@@ -23,10 +23,11 @@ $(document).ready(function() {
         window.location = data.mails;
       }
       else{
-				inboxmails = data.userget;
+				outboxmails = data.userpost;
 				mailcount = 0;
 			  showmail(data.mails);
-				for(i=0;i<inboxmails.length;++i){
+        console.log(data);
+				for(i=0;i<outboxmails.length;++i){
 					$("#mail" + i).click(function(){
 						mailcount = $(this).attr('id')[4];
 						$("#popup_mail").animate({width:"90vw",height:"110vw",top:"15vh",left:"5vw"});
@@ -34,31 +35,13 @@ $(document).ready(function() {
 						$("#popup_down").html("TAINAN, STREET");
 						$("main").css({"-webkit-filter":"blur(5px)"});
 						$("#popup_text").hide();
-						
-						if(inboxmails[mailcount].islike){
-							$("#popup_like").css("background-image", "url('../images/kekeke-18-2.png')");
-              inboxmails[mailcount].islike = false;
-						}
-						else{
-							$("#popup_like").css("background-image", "url('../images/kekeke-18.png')");
-              inboxmails[mailcount].islike = true;
-						}
-
-						if(inboxmails[mailcount].iscollect){
-							$("#popup_collection").css("background-image", "url('../images/kekeke-19-2.png')");
-              inboxmails[mailcount].iscollect = false;
-						}
-						else{
-							$("#popup_collection").css("background-image", "url('../images/kekeke-19.png')");
-              inboxmails[mailcount].iscollect = true;
-						}
 
 						$.ajax({
 							type:"POST",
 							url:"/getmail",
 							data:
 							{
-								mail_id: inboxmails[mailcount].mail_id,
+								mail_id: outboxmails[mailcount].mail_id,
 								user_id: $.cookie('user')
 							},
 							success:function(data){
@@ -66,7 +49,7 @@ $(document).ready(function() {
 								$("#popup_text").html(data.msg);
 							},
 							error:function(){
-								console.log("Get inboxmail Error!");
+								console.log("Get outboxmail Error!");
 							}
 						});
 					});
@@ -77,61 +60,6 @@ $(document).ready(function() {
       console.log("CheckRecv Error!");
     }
   });
-
-/*	
-	socket.on('notification', function(msg){
-		notice(msg);
-	});
-*/
-/*
-	$(".mail_right").click(function(){
-		$("#popup_mail").animate({width:"90vw",height:"110vw",top:"15vh",left:"5vw"});
-		$("#popup_background").css({"width":"100vw","height":"100vh"});
-		$("#popup_down").html("TAINAN, STREET");
-		$("main").css({"-webkit-filter":"blur(5px)"});
-		
-		var pic = document.getElementById('popup_pic');
-		var bigImg = document.getElementById("test2").cloneNode();
-		$('div#popup_pic > img').remove();
-		pic.appendChild(bigImg);
-	});
-	
-	$(".mail_left").click(function(){
-		$("#popup_mail").animate({width:"90vw",height:"110vw",top:"15vh",left:"5vw"});
-		$("#popup_background").css({"width":"100vw","height":"100vh"});
-		$("#popup_down").html("TAINAN, STREET");
-		$("main").css({"-webkit-filter":"blur(5px)"});
-		
-		var pic = document.getElementById('popup_pic');
-		var bigImg = document.getElementById("test1").cloneNode();
-		$('div#popup_pic > img').remove();
-		pic.appendChild(bigImg);
-	});
-	
-	$(".mail_right2").click(function(){
-		$("#popup_mail").animate({width:"90vw",height:"110vw",top:"15vh",left:"5vw"});
-		$("#popup_background").css({"width":"100vw","height":"100vh"});
-		$("#popup_down").html("TAINAN, STREET");
-		$("main").css({"-webkit-filter":"blur(5px)"});
-		
-		var pic = document.getElementById('popup_pic');
-		var bigImg = document.getElementById("test2").cloneNode();
-		$('div#popup_pic > img').remove();
-		pic.appendChild(bigImg);
-	});
-	
-	$(".mail_left2").click(function(){
-		$("#popup_mail").animate({width:"90vw",height:"110vw",top:"15vh",left:"5vw"});
-		$("#popup_background").css({"width":"100vw","height":"100vh"});
-		$("#popup_down").html("TAINAN, STREET");
-		$("main").css({"-webkit-filter":"blur(5px)"});
-		
-		var pic = document.getElementById('popup_pic');
-		var bigImg = document.getElementById("test1").cloneNode();
-		$('div#popup_pic > img').remove();
-		pic.appendChild(bigImg);
-	});
-*/
 	
 	$("#popup_back").click(function(){
 		$("#popup_mail").animate({width:"0",height:"0",top:"50vh",left:"50vw"});
@@ -151,7 +79,7 @@ $(document).ready(function() {
 		$(".mail_left").removeClass("mail_left").addClass("mail_left2");
 		$(".mail_right").removeClass("mail_right").addClass("mail_right2");
 	});
-	
+	/*
 	$("#popup_like").click(function(){
     //change the heart color
     $.ajax({
@@ -199,6 +127,7 @@ $(document).ready(function() {
       }
     });
 	});
+	*/
 
 	$("#popup_menu").click(function(){
     $("#popup_all").css({
@@ -238,17 +167,7 @@ $(document).on("pagecreate","#pageone",function(){
 		$("#popup_text").html("");
 	});
 });
-/*
-function notice(msg) {
-	let _notification = new Notification(`消息通知`,{
-		body:`${msg}`,
-		icon:'./icon/notify.png'
-	});
-	setTimeout(function(){
-		_notification.close(); 
-	},5000);
-}
-*/
+
 function setUser(){
 	_user_name=$.cookie('user_name');
 	if(_user_name){

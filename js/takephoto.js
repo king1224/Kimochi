@@ -8,6 +8,49 @@ var yoffset=0;
 
 $(document).ready(function() {
 	checkmedia();
+
+  $('.btnShare').click(function(){
+    var elem = $(this);
+    var url = "https://luffy.ee.ncku.edu.tw/~king1224/Kimochi/login.html";
+    var pic = "https://luffy.ee.ncku.edu.tw/~king1224/Kimochi/images/kekeke-05.png";
+    FB.ui({
+      method: 'feed',
+      link: url,
+      picture: pic,
+      name: elem.data('title'),
+      description: elem.data('desc')
+    },function(){});
+    return false;
+  });
+
+
+  //avoid page deform
+  //==========================================================
+  //get the original page height size
+  var original = document.documentElement.clientHeight;
+  //add event that resize the page
+  window.addEventListener("resize", function() {
+    var resizeHeight = document.documentElement.clientHeight;
+    $('body').height(original);
+    $('#taking').height(original);
+    $('#writing').height(original);
+    $('#text_title').height(original*0.03);
+    $('#text_title').css('top',(original*0.03)+'px');
+  });
+  //==========================================================
+
+  //load localStorage text
+  //==========================================================
+  $('#inputtext').val(window.localStorage.getItem("inputtext"));
+  //==========================================================
+  
+  //store text
+  //==========================================================
+  $('#inputtext').on('input',function(e){
+		var texttext = $("#inputtext").val();
+		window.localStorage.setItem("inputtext",texttext);
+  });
+  //==========================================================
 	
 	$("#photo_back").click(function(){
 		if(Isshot){
@@ -47,6 +90,11 @@ $(document).ready(function() {
 	});
 	
 	$("#text_send").click(function(){
+    //clear localStorage text
+    //==========================================================
+    window.localStorage.removeItem("inputtext");
+    //==========================================================
+
 		//send data to mongodb
 		$.ajax({
 			type:"POST",
@@ -83,17 +131,18 @@ $(document).ready(function() {
 
 	navigator.mediaDevices.getUserMedia(constraints).
 		then(handleSuccess).catch(handleError);
-	
+/*	
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('sw.js')
 		.then(reg => console.log('完成 SW 設定!', reg))
 		.catch(err => console.log('Error!', err));
 	}
+*/
 })
 
 function checkmedia(){
 	if(video.videoWidth == 0 || video.videoHeight == 0){
-		console.log("Camera not READY!!!");
+		//console.log("Camera not READY!!!");
 		setTimeout("checkmedia();",100);
 	}
 	else{
@@ -113,3 +162,26 @@ function checkmedia(){
 		}
 	}
 }
+
+
+
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '207149940007425',
+		cookie     : true,  // enable cookies to allow the server to access 
+												// the session
+		xfbml      : true,  // parse social plugins on this page
+		version    : 'v2.8' // use graph api version 2.8
+	});
+};
+
+// Load the SDK asynchronously
+(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "https://connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
